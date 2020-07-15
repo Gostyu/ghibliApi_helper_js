@@ -1,43 +1,24 @@
 const fetch = require("node-fetch");
+const urls = require("./urls");
+const GhibliClientConfig = require("./ghibliClientConfig")
+const myFetch = (url)=>{
+ return fetch(url,{
+    method: GhibliClientConfig.method,
+    headers: GhibliClientConfig.headers,
+  });
+};
 
-const GhibliClientConfig = {
-  url: "https://ghibliapi.herokuapp.com",
-  method: "GET",
-  headers: {
-    "Content-type": "application/json",
-  },
-};
-const urls = {
-  films: `${GhibliClientConfig.url}/films`,
-  oneFilm: (id) => `${GhibliClientConfig.url}/films/${id}`,
-  allPeople: `${GhibliClientConfig.url}/people`,
-  onePerson: (id) => `${GhibliClientConfig.url}/people/${id}`,
-  locations: `${GhibliClientConfig.url}/locations`,
-  oneLocation: (id) => `${GhibliClientConfig.url}/locations/${id}`,
-  species: `${GhibliClientConfig.url}/species`,
-  oneSpecies: (id) => `${GhibliClientConfig.url}/species/${id}`,
-  vehicules: `${GhibliClientConfig.url}/vehicules`,
-  oneVehicule: (id) => `${GhibliClientConfig.url}/vehicules/${id}`,
-};
 const ghibliClient = {
   getFilms: async function () {
     try {
-      const fetchAllFilms = await fetch(urls.films, {
-        method: GhibliClientConfig.method,
-        headers: GhibliClientConfig.headers,
-      });
-      // console.log(resgitponse);
-      return await fetchAllFilms.json();
+      return await (await myFetch(urls.films)).json();
     } catch (err) {
       console.error(`Error => ${err}`);
     }
   },
   getFilm: async function (id) {
     try {
-      const fetchOneFilm = await fetch(urls.oneFilm(id), {
-        method: GhibliClientConfig.method,
-        headers: GhibliClientConfig.headers,
-      });
+      return await (await myFetch(urls.oneFilm(id))).json();
     } catch (err) {
       console.error(`Error => ${err}`);
     }
@@ -45,34 +26,59 @@ const ghibliClient = {
   },
   getLocations: async () => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.locations)).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
-  getOneLocation: async () => {
+  getOneLocation: async (id) => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.oneLocation(id))).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
   getPeople: async () => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.people)).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
   getOnePerson: async (id) => {
-    return null;
+    try{
+      return await (await myFetch(urls.onePerson(id))).json();
+    }catch(err){
+      console.error(`Error => ${err}`);
+    }
   },
   getSpecies: async () => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.species)).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
-  getOneSpecies: async () => {
+  getOneSpecies: async (id) => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.oneSpecies(id))).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
   getVehicules: async () => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.vehicules)).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
-  getOneVehicule: async () => {
+  getOneVehicule: async (id) => {
     try {
-    } catch (err) {}
+      return await (await myFetch(urls.oneVehicule(id))).json();
+    } catch (err) {
+      console.error(`Error => ${err}`);
+    }
   },
 };
 module.exports = ghibliClient;
