@@ -1,0 +1,14 @@
+{
+  "name": "ghibli_js_helper",
+  "version": "1.0.0",
+  "description": "A helper library for the ghibli api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lissossi Cédric",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
