@@ -1,6 +1,6 @@
-# Ghibli js helper 
+# Ghibli js helper library
 
-It's an helper in javascript(node) for the ghibli api (https://ghibliapi.herokuapp.com/) .
+It's an helper library in javascript(node) for the ghibli api (https://ghibliapi.herokuapp.com/) .
 
 After cloning the project, you must execute this command:
 ```
